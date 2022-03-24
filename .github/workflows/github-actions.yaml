@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           sudo apt-get install -y python3-venv
-          python -m venv ve
+          python -m venv .venv
           echo "ve/bin" >> $GITHUB_PATH
           pip install -r requirements.txt
           pip install -r dev-requirements.txt
@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           sudo apt-get install -y python3-venv
-          python -m venv ve
+          python -m venv .venv
           echo "ve/bin" >> $GITHUB_PATH
           pip install -r requirements.txt
           pip install -r dev-requirements.txt
