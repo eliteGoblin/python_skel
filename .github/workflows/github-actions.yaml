@@ -10,7 +10,7 @@ jobs:
       - run: |
           sudo apt-get install -y python3-venv
           python -m venv .venv
-          echo "ve/bin" >> $GITHUB_PATH
+          echo ".venv/bin" >> $GITHUB_PATH
           pip install -r requirements.txt
           pip install -r dev-requirements.txt
           scripts/ci/run-format-checker
@@ -23,22 +23,23 @@ jobs:
       - run: |
           sudo apt-get install -y python3-venv
           python -m venv .venv
-          echo "ve/bin" >> $GITHUB_PATH
+          echo ".venv/bin" >> $GITHUB_PATH
           pip install -r requirements.txt
           pip install -r dev-requirements.txt
           scripts/ci/stylecheck
-#
-#  run-type-checker:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Check out repository code
-#        uses: actions/checkout@v2
-#      - run: sudo apt-get install -y python3-venv
-#      - run: python -m venv ve
-#      - run: echo "ve/bin" >> $GITHUB_PATH
-#      - run: pip install -r requirements.txt
-#      - run: pip install -r dev-requirements.txt
-#      - run: ./typecheck
+
+  run-type-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: |
+          sudo apt-get install -y python3-venv
+          python -m venv .venv
+          echo ".venv/bin" >> $GITHUB_PATH
+          pip install -r requirements.txt
+          pip install -r dev-requirements.txt
+          scripts/ci/typecheck
 #
 #  run-unit-tests:
 #    runs-on: ubuntu-latest
