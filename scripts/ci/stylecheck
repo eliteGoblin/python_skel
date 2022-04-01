@@ -1,4 +1,4 @@
 
 #!/bin/sh
-
-pycodestyle --exclude=.venv .
+# ignore line longer than 80 chars
+pycodestyle --exclude=.venv --ignore=E501 .
