@@ -1,4 +1,4 @@
 
 #!/bin/sh
 # ignore line longer than 80 chars
-pycodestyle --exclude=.venv --ignore=E501 .
+pycodestyle --exclude=.venv --config=./pycode.cfg .
